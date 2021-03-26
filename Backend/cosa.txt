@@ -1,0 +1,16 @@
+ POST http://localhost:BD/postvalues.php
+ content-type: application/json
+
+{
+    "caca": "sample"
+}
+
+CREATE TABLE producto(
+    id_producto INT NOT NULL AUTO_INCREMENT,
+    prod_nombre VARCHAR(40) NOT NULL, 
+    prod_desc TEXT NOT NULL,
+    prod_cantidad VARCHAR(20) NOT NULL,
+    prod_precio DECIMAL(5,2) NOT NULL,
+    prod_img VARCHAR(60) NOT NULL,
+    PRIMARY KEY(id_producto) 
+);
