@@ -1,35 +1,39 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<link rel="stylesheet" href="token_page.css">
-<body>
-
-  <div class="container">
-   
-    <input type="text" name="uname" required>
-    <label for="uname"><b>Correo electr&#243;nico</b></label>
-
-  </div>
-  
-<br>
-
- <!-- 
-  Mostrar todos los correos de la BD 
-  Si el correo ingresado se encuentra en la BD 
-  enable the button.
- --> 
+  <html>
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+      <link rel="stylesheet" href="token_page.css">
  
-  <!-- Generar un token que se manda por correo (Esto en otro PHP archivo)-->
+  <!-- Al abrir este sitio se debe generar un random TOKEN-->
+       <body>
+          <div class="container">  
+            <input type="text" name="uname" required>
+            <label for="uname"><b>Correo electr&#243;nico</b></label>
+          </div>
+          <br>
+ <!-- Mostrar todos los correos de la BD, si el correo ingresado se encuentra en la BD: enable the button. --> 
+            
+            <button class="btn" type="submit" onclick="myFunction()" target="_blank">Entrar</button>
 
- <!-- Cambiar a redireccion en Js -->
- 
-    <form method="get" action="file:///C:/xampp/htdocs/Dist/Front/psw_recovery/new_psw.html">   
-        <button class="btn" type="submit">Entrar</button>
-    </form>  
+  <!--           On click sent Email                     -->
+  <!-- El TOKEN generado se manda al correo como un link -->
 
 
-</body>
-</html>
+
+
+
+
+
+
+
+
+            <!-- Ver si funciona fuera del html, pero ya esta en Js --> 
+              <script>
+              function myFunction() {
+              location.href = "   C:/xampp/htdocs/Dist/Krusty_Work/Front/psw_recovery/new_psw.html";
+              }
+              </script>
+        </body>
+  </html>
 

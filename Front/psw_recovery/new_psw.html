@@ -1,73 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+    </head>
+        <link rel="stylesheet" href="token_page.css">
+            <body>
+<!-- Quitar form y almacenar la nueva contraseña en la BD -->              
+              <form method="get">   
+                <tr>
+                    <td>Contrase&#241;a: </td>
+                    <td><input type="password" name="contraseña" id="contra1" required ></td>
+                </tr>
+                <tr>
+                    <td>Repetir Contrase&#241;a: </td>
+                    <td><input type="password" name="R-psw" id="contra2" required></td>
+                </tr>           
+                <tr>
+                    <td>Tus contrase&#241;as: </td>
+                    <td><input type="text2" id="text" readonly></td>
+                </tr>
+                    <br>
+                    <br>
+              </form> 
+                <button class="btn" input type="submit" value="Save" name="submitSave" id="submitSave" onclick="myFunction()" target="_blank">Ok</button>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+            <!-- Ver si funciona fuera del html, pero ya esta en Js --> 
+                    <script>    
+                        function myFunction() {
+                           location.href = "   C:/xampp/htdocs/Dist/Krusty_Work/Front/login/login.html";
+                     }
+            
+                    $('#contra2').on('keyup', function() {
+                        if($('#contra2').val() == $('#contra1').val()) {
+                            $('#text').val('Coinciden');
+                            $('#submitSave').prop("disabled", false);
+                        }
+                         else {
+                            $('#text').val('No coinciden. Intente de nuevo!');
+                            $('#submitSave').prop("disabled", true);
+                            }
+                        });
+                    </script>
 
-</head>
-
-<link rel="stylesheet" href="token_page.css">
-<body>
-
-
-
- <!-- Quitar form y almacenar la nueva contraseña en
-    la BD
--->
-
-    <form method="get" action="file:///C:/xampp/htdocs/Dist/Front/login/login.html">   
-    <tr>
-        <td>Contraseña: </td>
-        <td><input type="password" name="contraseña" id="contra1" required ></td>
-    </tr>
-    <tr>
-        <td>Repetir Contraseña: </td>
-        <td><input type="password" name="R-psw" id="contra2" required></td>
-    </tr>
-  
-    <tr>
-        <td>Tus contraseñas: </td>
-        <td><input type="text2" id="text" readonly></td>
-    </tr>
-    
-  
-<br>
-
-<br>
-
-
- <!-- Cambiar a redireccion en Js -->
- 
-<tr class="btn-container">
-    <td>&nbsp;</td>
-  <td><button class="btn" input type="submit" value="Save" name="submitSave" id="submitSave">Ok</button></td>
-</tr>
-    
-       
-    </form> 
-
-
-
-
-
-
-
-
-    
-<script>
-        $('#contra2').on('keyup', function() {
-            if($('#contra2').val() == $('#contra1').val()) {
-                $('#text').val('Coinciden');
-                $('#submitSave').prop("disabled", false);
-            }
-            else {
-                $('#text').val('Las contraseñas no coinciden. Intente de nuevo!');
-                $('#submitSave').prop("disabled", true);
-            }
-        });
-</script>
-
-</body>
+            </body>
 </html>
 
