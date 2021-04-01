@@ -1,11 +1,13 @@
 <?php
-// this->http://localhost/Dist/Krusty_Work/Front/psw_recovery/e-mail/email.php
-// Sends the email.
-
-header('Content-Type: text/html; charset=UTF-8');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+// this->http://localhost/Dist/Krusty_Work/Front/psw_recovery/token_page.html
+// Sends the email.
+
+header('Content-Type: text/html; charset=UTF-8');
+
+function EmailScript() {
 require 'C:/xampp/htdocs/Dist/Krusty_Work/Front/psw_recovery/e-mail/PHPMailer/src/Exception.php';
 require 'C:/xampp/htdocs/Dist/Krusty_Work/Front/psw_recovery/e-mail/PHPMailer/src/PHPMailer.php';
 require 'C:/xampp/htdocs/Dist/Krusty_Work/Front/psw_recovery/e-mail/PHPMailer/src/SMTP.php';
@@ -20,12 +22,12 @@ $mail->isHTML();
 $mail->Username = 'electro.shop.dist@gmail.com';
 $mail->Password = '2021_shop';
 $mail->SetFrom('not-reply@electroshop.com');
-$mail->Subject = 'Electro Shop.';
+$mail->Subject = 'Prueba 123 Electro Shop.';
 
-
+//   El TOKEN generado se manda al correo como un link 
 // | Seccion donde aparecera el link con el random token |
-            $mail->Body = 'Here is your link:';
-// |                                                     |
+    $mail->Body = 'Here is your link: (C:/xampp/htdocs/Dist/Krusty_Work/Front/psw_recovery/new_psw.html)';
+// |                   (Provisional)                     |                       
 // |      Token page tiene que heredarle el Token        |
 // | --------------------------------------------------- |
 
@@ -35,9 +37,19 @@ $mail->Subject = 'Electro Shop.';
 // |                                                     |
 // | --------------------------------------------------- |
 
+if ($mail->Send() ) {
+	echo "¡El correo a sido enviado!";	
+}
+else{
+	echo "Error..!";
+}
 
-$mail->Send();
+$mail->smtpClose();
 
+}
+
+
+EmailScript();
 ?>
       
  

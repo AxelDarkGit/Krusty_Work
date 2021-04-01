@@ -5,7 +5,7 @@
     </head>
       <link rel="stylesheet" href="token_page.css">
  
-  <!-- Al abrir este sitio se debe generar un random TOKEN-->
+  <!-- Al abrir este sitio se debe generar un random TOKEN y almacenar en la BD-->
        <body>
           <div class="container">  
             <input type="text" name="uname" required>
@@ -13,19 +13,14 @@
           </div>
           <br>
  <!-- Mostrar todos los correos de la BD, si el correo ingresado se encuentra en la BD: enable the button. --> 
+ 
+  <!--           On click sent Email    READY                -->
+  <form action="e-mail/email.php" method="POST">
+  <button class="btn" type="submit" onclick="myFunction()" target="_blank">Entrar</button>
+  </form>
             
-            <button class="btn" type="submit" onclick="myFunction()" target="_blank">Entrar</button>
 
-  <!--           On click sent Email                     -->
-  <!-- El TOKEN generado se manda al correo como un link -->
-
-
-
-
-
-
-
-
+  <!-- El TOKEN generado se manda al correo como un link que solo funcionara 1hr UNREADY -->
 
 
             <!-- Ver si funciona fuera del html, pero ya esta en Js --> 
