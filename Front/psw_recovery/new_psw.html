@@ -25,7 +25,7 @@
                     <br>
                     <br>
               </form> 
-                <button class="btn" input type="submit" value="Save" name="submitSave" id="submitSave" onclick="myFunction()" target="_blank">Ok</button>
+                <button class="btn" input type="submit" value="Save" name="submitSave" id="submitSave" onclick="myFunction()" >Ok</button>
 
            
            
@@ -33,8 +33,9 @@
                 <!-- Ver si funciona fuera del html, pero ya esta en Js --> 
                     <script>    
                         function myFunction() {
-                           location.href = "   C:/xampp/htdocs/Dist/Krusty_Work/Front/login/login.html";
+                           location.href = "  http://localhost/Dist/Krusty_Work/Front/login/login.html";
                      }
+                    
             
                     $('#contra2').on('keyup', function() {
                         if($('#contra2').val() == $('#contra1').val()) {
