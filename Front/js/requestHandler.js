@@ -1,5 +1,12 @@
-async function getRequest(URL) {
-  let response = await fetch(URL);
+async function getRequest(URL, data) {
+  let options = {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  }
+  let response = await fetch(URL, options);
   return await response.json();
 }
 

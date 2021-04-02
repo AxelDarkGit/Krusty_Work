@@ -1,7 +1,7 @@
 <?php
 require('dbHandler.php');
 
-$query = "SELECT * FROM test";
+$query = "SELECT * FROM ".$_GET["table"];
 $handler = new dbControl();
 $results = $handler->fetchAll($query);
 
