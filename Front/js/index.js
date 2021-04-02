@@ -14,6 +14,11 @@ async function verifyUser(){
 
   let data = await getRequest('http://localhost/Dist/Krusty_Work/Backend/get.php', values);
   console.log(data);
+
+  /*
+  Verificar IF correo en document.getElementByID('uname').value existe en la BD
+  Ocupas un FOR para revisar todos los registros de data->contiene todos usuarios en tabla "usuario"
+  */
 }
 
 async function clickeado() {
