@@ -16,5 +16,5 @@ async function postRequest(URL, data) {
 }
 
  function myRedirecion() {
-    location.href = "C:/xampp/htdocs/Dist/Front/psw_recovery/token_page.html";
+    location.href = "C:/xampp/htdocs/Dist/Krusty_Work/Front/psw_recovery/token_page.html";
   }

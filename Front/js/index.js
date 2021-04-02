@@ -1,5 +1,5 @@
 async function loaded() {
-  let data = await getRequest('http://localhost/Dist/Backend/get.php');
+  let data = await getRequest('http://localhost/Dist/Krusty_Work/Backend/get.php');
   console.log(data);
 }
 
@@ -8,6 +8,6 @@ async function clickeado() {
     nombre: document.getElementById('nombre').value
   };
 
-  let data = await postRequest('http://localhost/Dist/Backend/post.php', values)
+  let data = await postRequest('http://localhost/Dist/Krusty_Work/Backend/post.php', values)
   console.log(data);
 }
