@@ -4,7 +4,25 @@ $json = file_get_contents('php://input');
 $data = json_decode($json);
 
 $handler = new dbControl();
-$query = "INSERT INTO reinicio_contra(reinicio_correo, reinicio_token) VALUES('$data->reinicio_correo', '$data->reinicio_token')";
+
+// Building query with the provided json data
+$count = 0;
+$query = "INSERT INTO ".$data->tblName."("; // Beginning of query with table name from json
+    foreach($data as $key => $val){
+        if($count <> 0)
+            $query .= $key.",";             //columna1,columna2,
+        $count++;
+    }
+    $query = rtrim($query, ",");            
+$count = 0;
+$query .= ") VALUES(";                      // Middle of query, closing columns, adding values
+    foreach($data as $key => $val){
+        if($count <> 0)
+            $query .= "'".$val."',";        //'valor1','valor2',
+        $count++;
+    }
+    $query = rtrim($query, ",");            
+$query .= ")";                              // End of query closing ')'
 
 $id = $handler->insert($query);
 

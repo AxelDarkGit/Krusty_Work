@@ -8,6 +8,15 @@ async function loaded() {
   console.log(data);
 }
 
+async function clickeado() {
+  let values = {
+    nombre: document.getElementById('nombre').value
+  };
+
+  let data = await postRequest('http://localhost/Dist/Krusty_Work/Backend/post.php', values)
+  console.log(data);
+}
+
 async function verifyUser(){
   // Declare table name to request all entries from.
   let values = {
@@ -26,40 +35,40 @@ async function verifyUser(){
   }
 
   if (!emailFound) {
-    console.log("El correo no se envio.");
+    console.log("Error: Correo no registrado en la base de datos de usuarios...");
   }
   else {
     // If the email is found in the database, generate unique token (TODO)
-    var token = '222222';
+    var token = createToken(8);
 
-    // Insert request into the database (table reinicio_contra) with emailFound and token
-    let sqlInsert = {
+    // Insert request into the database (in tblName) with emailFound and token
+    let values = {
+      tblName: 'reinicio_contra',
       reinicio_correo: emailFound[1],
       reinicio_token: token
     };
-    let data = await postRequest('http://localhost/Dist/Krusty_Work/Backend/post.php', sqlInsert)
+    let data = await postRequest('http://localhost/Dist/Krusty_Work/Backend/post.php', values)
     
-    // Verify query success by checking new entry ID from database (table reinicio_contra)
+    // Verify query success by checking new entry ID from database (in tblName)
     var newID;
     if(newID = Object.entries(data).find(pair => pair[0] === 'id' && pair[1] != 0)) {
+      // Sent email to emailFound with generated unique token (TODO)
+      //document.action="e-mail/email.php"
+      console.log('Correo con token enviado!');
       console.log(data);
     }
     else {
-      console.log("not inserted");
+      console.log("Error: No se pudo generar petición de reinicio de contraseña!");
     }
-    // TODO
-
-    // Sent email to emailFound with generated unique token (TODO)
-    console.log('El correo se ha enviado de manera exitosa.');
-    //document.action="e-mail/email.php"
   }
 }
 
-async function clickeado() {
-  let values = {
-    nombre: document.getElementById('nombre').value
-  };
-
-  let data = await postRequest('http://localhost/Dist/Krusty_Work/Backend/post.php', values)
-  console.log(data);
+function createToken(length) {
+  var token = '';
+  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for (var i=0; i<length; i++) {
+     token += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return token;
 }
