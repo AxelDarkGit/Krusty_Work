@@ -4,12 +4,10 @@ $json = file_get_contents('php://input');
 $data = json_decode($json);
 
 $handler = new dbControl();
-// $query = "INSERT INTO test(texto) VALUES('$data->nombre')";
+$query = "INSERT INTO reinicio_contra(reinicio_correo, reinicio_token) VALUES('$data->reinicio_correo', '$data->reinicio_token')";
 
-$query = "SELECT usuario_correo FROM usuario WHERE usuario_correo='$data->correo'";
-
-$result = $handler->fetchAll($query);
+$id = $handler->insert($query);
 
 $data = new obj(true);
-$data->result = $result;
+$data->id = $id;
 echo json_encode($data);
