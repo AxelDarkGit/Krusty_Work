@@ -4,10 +4,12 @@ $json = file_get_contents('php://input');
 $data = json_decode($json);
 
 $handler = new dbControl();
-$query = "INSERT INTO test(texto) VALUES('$data->nombre')";
+// $query = "INSERT INTO test(texto) VALUES('$data->nombre')";
 
-$id = $handler->insert($query);
+$query = "SELECT usuario_correo FROM usuario WHERE usuario_correo='$data->correo'";
+
+$result = $handler->fetchAll($query);
 
 $data = new obj(true);
-$data->id = $id;
+$data->result = $result;
 echo json_encode($data);

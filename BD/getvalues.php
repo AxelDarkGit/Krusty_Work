@@ -5,6 +5,8 @@ $query = "SELECT * FROM ".$_GET["table"];
 $handler = new dbControl();
 $results = $handler->fetchAll($query);
 
+
+
 $values = new obj(true);
 $values->data = $results;
 

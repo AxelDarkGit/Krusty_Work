@@ -10,13 +10,4 @@ $data = json_decode($json);
 $handler = new requestHandler();
 $values = $handler->postRequest("http://localhost/Dist/Krusty_Work/BD/postvalues.php", $data);
 
-//recuerda hacer json_decode en caso de que necesites insertar otro dato
-$values = json_decode($values);
-
-if ($values->state === true) {
-  //otro insert
-  $response = new obj(true);
-  echo json_encode($response);
-} else {
-  echo $values;
-}
+echo $values;
