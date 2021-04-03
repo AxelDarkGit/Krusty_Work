@@ -101,9 +101,11 @@ async function loadToken() {
       if(difHour < 1) {
         button.disabled = false;
         console.log("Valid token!");
+        window.locationf="http://localhost/Dist/Krusty_Work/Front/login/login.html";
       }
       else {
         console.log("Error: Token has expired!");
+        window.locationf="http://localhost/Dist/Krusty_Work/Front/login/login.html";
       }
     }
     else {
