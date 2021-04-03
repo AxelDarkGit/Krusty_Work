@@ -27,12 +27,10 @@
                     <br>
                     <br>
               </form> 
+             <!--En ONLOAD, verifica que el token sea valido, mientras no sea valido el botón OK está deshabilitado. Si el TOKEN es valido, el boton OK, UPDATE la tabla de usuario con nueva contraseña.  -->    
                 <button class="btn" input type="submit" value="Save" name="submitSave" id="submitSave" onclick="saveNewPsw()" >Ok</button>
 
            
-           
-           
-                <!-- Ver si funciona fuera del html, pero ya esta en Js --> 
                     <script>    
                         function myFunction() {
                            location.href = "  http://localhost/Dist/Krusty_Work/Front/login/login.html";

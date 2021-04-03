@@ -16,22 +16,19 @@
           <br>
  <!-- Mostrar todos los correos de la BD, si el correo ingresado se encuentra en la BD: enable the button. --> 
  
-  <!--           On click sent Email    READY                -->
+  <!--           Boton validar correo, verifica que el correo exista en la tabla de usuarios y CREA registro en la tabla reinicio_contra con TOKEN y HORA            -->
   <button onclick="verifyUser()">Validar Correo</button>
+  
+  <!-- Boton reiniciar contraseña, ENVIA correo con URL con TOKEN y CORREO.-->
   <form id="sendEmail" action="" method="POST">
-    <input type="submit" id="resetPsw" value="Reiniciar Contraseña" disabled>
+    <input type="submit" id="resetPsw" value="Reiniciar Contrase&#241;a" disabled>
   </form>
-            
-
-  <!-- El TOKEN generado se manda al correo como un link que solo funcionara 1hr UNREADY -->
-
-
-            <!-- Ver si funciona fuera del html, pero ya esta en Js --> 
               <script>
               function myFunction() {
               location.href = "../Front/psw_recovery/new_psw.html";
               
               }
               </script>
+
         </body>
   </html>

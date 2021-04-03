@@ -1,3 +1,4 @@
+//Todos los datos son compuestos en index.js
 async function loaded() {
   let values = {
     tblName: 'usuario'
@@ -101,11 +102,10 @@ async function loadToken() {
       if(difHour < 1) {
         button.disabled = false;
         console.log("Valid token!");
-        window.locationf="http://localhost/Dist/Krusty_Work/Front/login/login.html";
+       
       }
       else {
-        console.log("Error: Token has expired!");
-        window.locationf="http://localhost/Dist/Krusty_Work/Front/login/login.html";
+        console.log("Error: Token has expired!");      
       }
     }
     else {
@@ -136,6 +136,7 @@ async function saveNewPsw() {
 
     let data = await postRequest('http://localhost/Dist/Krusty_Work/Backend/update.php', values)
     console.log("Contraseña actualizada!");
+   
   }
 }
 

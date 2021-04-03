@@ -4,7 +4,7 @@ $json = file_get_contents('php://input');
 $data = json_decode($json);
 
 $handler = new dbControl();
-
+//post y postvalues son para insertar registros en una tabla.
 // Building query with the provided json data
 $count = 0;
 $query = "INSERT INTO ".$data->tblName."("; // Beginning of query with table name from json
