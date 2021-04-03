@@ -45,6 +45,7 @@ async function verifyUser(){
     let values = {
       tblName: 'reinicio_contra',
       reinicio_correo: emailFound[1],
+      reinicio_fechac: getCurrentDate(),
       reinicio_token: token
     };
     let data = await postRequest('http://localhost/Dist/Krusty_Work/Backend/post.php', values)
@@ -63,12 +64,78 @@ async function verifyUser(){
   }
 }
 
+async function loadToken() {
+   // Declare table name to request all entries from.
+  let values = {
+    tblName: 'reinicio_contra'
+  };
+  // Get all entries from reinicio_contra
+  let data = await getRequest('http://localhost/Dist/Krusty_Work/Backend/get.php', values);
+
+  // Get URL parameters (token expected)
+  const urlParams = new URLSearchParams(window.location.search);
+
+  if(urlParams.has('token')){
+    // Verify that URL token exists in the database (search through all entries in data)
+    var tokenFound, indexEntry;
+    for(var i=0; i<data.data.length; i++) {
+        if(tokenFound = Object.entries(data.data[i]).find(pair =>
+          pair[0] === 'reinicio_token' &&
+          pair[1] === urlParams.get('token')
+        )) {
+          indexEntry = i;
+          break;
+        }
+    }
+    // When token has been found
+    if(tokenFound) {
+      // Verify time validity of the token, more than 1 hour difference and token is invalid.
+      var curDate = new Date();
+      var sqlDate = new Date(Date.parse(data.data[indexEntry].reinicio_fechac.replace(/[-]/g,'/')));
+      var difHour = Math.abs(curDate - sqlDate) / 36e5;
+
+      if(difHour < 1) {
+        console.log("Valid token!");
+      }
+      else {
+        console.log("Error: Token has expired!");
+      }
+    }
+    else {
+      console.log("Error: Invalid token!");
+    }
+  }
+  else {
+    console.log("Error: Invalid or missing token!");
+  }
+}
+
 function createToken(length) {
   var token = '';
   var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   var charactersLength = characters.length;
+
   for (var i=0; i<length; i++) {
      token += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
+
   return token;
+}
+
+function getCurrentDate() {
+  var sqlDate = new Date();
+  var day = sqlDate.getDate();
+  var month = sqlDate.getMonth()+1;
+  var year = sqlDate.getFullYear();
+
+  if(day<10) {
+    day = "0" + day;
+  } 
+
+  if(month<10) {
+    month = "0" + month;
+  } 
+
+  sqlDate = year+"-"+month+"-"+day + " " +sqlDate.getHours() + ":" + sqlDate.getMinutes()+":" + sqlDate.getSeconds();
+  return sqlDate;
 }
