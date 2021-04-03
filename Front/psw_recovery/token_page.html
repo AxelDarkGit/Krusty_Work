@@ -17,8 +17,9 @@
  <!-- Mostrar todos los correos de la BD, si el correo ingresado se encuentra en la BD: enable the button. --> 
  
   <!--           On click sent Email    READY                -->
-  <!--  <form  action="e-mail/email.php" method="POST"-->
-  <button class="btn" type="submit" onclick="verifyUser()" target="_blank">Entrar</button>
+  <button onclick="verifyUser()">Validar Correo</button>
+  <form id="sendEmail" action="" method="POST">
+    <input type="submit" id="resetPsw" value="Reiniciar Contraseña" disabled>
   </form>
             
 

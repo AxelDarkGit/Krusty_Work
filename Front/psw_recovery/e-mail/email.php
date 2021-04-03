@@ -75,13 +75,13 @@ $mail->Subject = 'Prueba 123 Electro Shop.';
 
 //   El TOKEN generado se manda al correo como un link 
 // | Seccion donde aparecera el link con el random token |
-    $mail->Body = "Here is your link: (http://localhost/Dist/Krusty_Work/Front/psw_recovery/new_psw.html)";
+    $mail->Body = "Here is your link: (http://localhost/Dist/Krusty_Work/Front/psw_recovery/new_psw.html?token=".$_GET["token"]."&email=".$_GET["email"].")";
 // |                   (Provisional)                     |                       
 // |      Token page tiene que heredarle el Token        |
 // | --------------------------------------------------- |
 
 // |        Variable para identificar el correo          |
-         $mail->AddAddress('axelhumano@gmail.com');
+         $mail->AddAddress($_GET["email"]);
 // |                                                     |
 // |                                                     |
 // | --------------------------------------------------- |

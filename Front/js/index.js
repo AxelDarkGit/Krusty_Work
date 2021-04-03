@@ -54,7 +54,8 @@ async function verifyUser() {
     var newID;
     if(newID = Object.entries(data).find(pair => pair[0] === 'id' && pair[1] != 0)) {
       // Sent email to emailFound with generated unique token (TODO)
-      //document.action="e-mail/email.php"
+      document.getElementById("sendEmail").action = "e-mail/email.php?token="+token+"&email="+emailFound[1];
+      document.getElementById("resetPsw").disabled = false;
       console.log('Correo con token enviado!');
       console.log(data);
     }
