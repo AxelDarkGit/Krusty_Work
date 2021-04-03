@@ -17,13 +17,13 @@ async function clickeado() {
   console.log(data);
 }
 
-async function verifyUser(){
+async function verifyUser() {
   // Declare table name to request all entries from.
   let values = {
     tblName: 'usuario'
   };
   // Get all entries from tblName
-  let data = await postRequest('http://localhost/Dist/Krusty_Work/Backend/get.php', values);
+  let data = await getRequest('http://localhost/Dist/Krusty_Work/Backend/get.php', values);
 
   // Verify that entered email exists in the database (search through all entries in data)
   var emailFound;
@@ -65,7 +65,10 @@ async function verifyUser(){
 }
 
 async function loadToken() {
-   // Declare table name to request all entries from.
+  // Disable button button by default
+  const button = document.getElementById('submitSave');
+  button.disabled = true;
+  // Declare table name to request all entries from.
   let values = {
     tblName: 'reinicio_contra'
   };
@@ -95,6 +98,7 @@ async function loadToken() {
       var difHour = Math.abs(curDate - sqlDate) / 36e5;
 
       if(difHour < 1) {
+        button.disabled = false;
         console.log("Valid token!");
       }
       else {
@@ -107,6 +111,28 @@ async function loadToken() {
   }
   else {
     console.log("Error: Invalid or missing token!");
+  }
+}
+
+async function saveNewPsw() {
+  if((document.getElementById('contra1').value === "" ||
+    document.getElementById('contra2').value === "") ||
+    document.getElementById('contra1').value != document.getElementById('contra2').value
+  ) {
+      console.log("Error: Invalid password!");
+  }
+  else {
+    // Get URL parameters (token expected)
+    const urlParams = new URLSearchParams(window.location.search);
+
+    let values = {
+      tblName: 'usuario',
+      usuario_correo: urlParams.get('email'),
+      usuario_contra: document.getElementById('contra2').value
+    };
+
+    let data = await postRequest('http://localhost/Dist/Krusty_Work/Backend/update.php', values)
+    console.log("Contraseña actualizada!");
   }
 }
 

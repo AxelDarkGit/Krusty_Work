@@ -27,7 +27,7 @@
                     <br>
                     <br>
               </form> 
-                <button class="btn" input type="submit" value="Save" name="submitSave" id="submitSave" onclick="myFunction()" >Ok</button>
+                <button class="btn" input type="submit" value="Save" name="submitSave" id="submitSave" onclick="saveNewPsw()" >Ok</button>
 
            
            
@@ -40,7 +40,10 @@
                     
             
                     $('#contra2').on('keyup', function() {
-                        if($('#contra2').val() == $('#contra1').val()) {
+                        if($('#contra2').val() == $('#contra1').val() &&
+                            $('#contra1').val() != "" &&
+                            $('#contra2').val() != ""
+                        ) {
                             $('#text').val('Coinciden');
                             $('#submitSave').prop("disabled", false);
                         }
